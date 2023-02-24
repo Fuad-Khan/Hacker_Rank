@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    
+    int size = n*2 - 1;
+    int matrix[size][size];
+    
+    for(int i=0; i<size; i++) {
+        for(int j=0; j<size; j++) {
+            int min = i < j ? i : j;
+            min = min < size-i ? min : size-i-1;
+            min = min < size-j-1 ? min : size-j-1;
+            matrix[i][j] = n - min;
+        }
+    }
+    
+    for(int i=0; i<size; i++) {
+        for(int j=0; j<size; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
